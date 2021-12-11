@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.core.content.ContentProviderCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +15,6 @@ import com.pyvot360.batterymanager.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
     TabLayout tabLayout;
     ViewPager viewPager;
 
@@ -21,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        tabLayout = binding.tabs;
-        viewPager = binding.viewPager;
+        tabLayout = findViewById(R.id.tabs);
+        viewPager = findViewById(R.id.view_pager);
 
         tabLayout.addTab(tabLayout.newTab().setText("Stats"));
         tabLayout.addTab(tabLayout.newTab().setText("Running Apps"));
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+//                tabLayout.setBackground(ContextCompat.getDrawable(context, R.drawable.tab_background));
             }
 
             @Override
